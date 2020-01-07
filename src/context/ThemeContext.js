@@ -6,7 +6,7 @@ class ThemeContextProvider extends Component {
     state = {
         isLightTheme: true,
         light: {
-            syntax: '#SSS',
+            syntax: '#555',
             ui: '#ddd',
             bg: '#eee'
         },
@@ -17,9 +17,14 @@ class ThemeContextProvider extends Component {
         }
     };
 
+    toggleTheme = () => {
+        const { isLightTheme } = this.state;
+        this.setState({isLightTheme: !isLightTheme });
+    };
+
     render() {
         return(
-            <ThemeContext.Provider value={{ ...this.state}}>
+            <ThemeContext.Provider value={{ ...this.state, toggleTheme: this.toggleTheme }}>
                 {this.props.children}
             </ThemeContext.Provider>
         );
